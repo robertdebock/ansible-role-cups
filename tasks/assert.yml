@@ -1,4 +1,5 @@
 ---
+
 - name: test if cups_listen is set correctly
   assert:
     that:
