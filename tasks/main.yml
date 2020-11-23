@@ -20,6 +20,6 @@
 
 - name: start and enable software
   service:
-    name: cups
+    name: "{{ cups_service }}"
     state: started
     enabled: yes
