@@ -31,9 +31,10 @@ WebInterface {{ cups_web_interface }}
 {% for location in cups_locations %}
 <Location {{ location.name }}>
   Order {{ location.order }}
-{%- if location.authtype is defined %}  AuthType {{ location.authtype }}{% endif %}
 
-{%- if location.require is defined %}  require {{ location.require }}{% endif %}
+{% if location.authtype is defined %}  AuthType {{ location.authtype }}{% endif %}
+
+{% if location.require is defined %}  require {{ location.require }}{% endif %}
 
 </Location>
 {% endfor %}
