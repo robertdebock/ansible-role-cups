@@ -14,6 +14,7 @@
   template:
     src: cupsd.conf.j2
     dest: /etc/cups/cupsd.conf
+    mode: "0640"
   notify:
     - restart cups
 
