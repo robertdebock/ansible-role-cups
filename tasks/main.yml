@@ -1,0 +1,23 @@
+---
+# tasks file for cups
+- name: include assert.yml
+  include_tasks: assert.yml
+  run_once: yes
+
+- name: install packages
+  package:
+    name: cups
+    state: present
+
+- name: configure cups
+  template:
+    src: cupsd.conf.j2
+    dest: /etc/cups/cupsd.conf
+  notify:
+    - restart cups
+
+- name: start and enable software
+  service:
+    name: cups
+    state: started
+    enabled: yes

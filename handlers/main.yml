@@ -1,0 +1,7 @@
+---
+# handlers file for cups
+
+- name: restart cups
+  service:
+    name: cups
+    state: restarted
