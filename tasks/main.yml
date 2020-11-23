@@ -15,6 +15,7 @@
     src: cupsd.conf.j2
     dest: /etc/cups/cupsd.conf
     mode: "0640"
+    validate: cupsd -t -s %s
   notify:
     - restart cups
 
