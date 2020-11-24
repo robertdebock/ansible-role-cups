@@ -5,3 +5,5 @@
   service:
     name: "{{ cups_service }}"
     state: restarted
+  when:
+    - not ansible_check_mode | bool
