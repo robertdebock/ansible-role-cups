@@ -4,12 +4,14 @@
   assert:
     that:
       - cups_listen is defined
+      - cups_listen is string
     quiet: yes
 
 - name: test if cups_browsing is set correctly
   assert:
     that:
       - cups_browsing is defined
+      - cups_browsing is string
       - cups_browsing in [ "Off", "On" ]
     quiet: yes
 
@@ -24,7 +26,9 @@
   assert:
     that:
       - item.name is defined
+      - item.name is string
       - item.order is defined
+      - item.order is string
     quiet: yes
   loop: "{{ cups_locations }}"
   loop_control:
@@ -59,6 +63,7 @@
   assert:
     that:
       - cups_preserve_job_history is defined
+      - cups_preserve_job_history is string
       - cups_preserve_job_history in [ "No", "Yes" ]
     quiet: yes
 
@@ -66,5 +71,6 @@
   assert:
     that:
       - cups_web_interface is defined
+      - cups_web_interface is string
       - cups_web_interface in [ "No", "Yes" ]
     quiet: yes
