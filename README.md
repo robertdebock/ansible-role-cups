@@ -2,9 +2,9 @@
 
 Install and configure CUPS, the Common Unix Printing System.
 
-|Travis|GitHub|Quality|Downloads|Version|
-|------|------|-------|---------|-------|
-|[![travis](https://travis-ci.com/robertdebock/ansible-role-cups.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-cups)|[![github](https://github.com/robertdebock/ansible-role-cups/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-cups/actions)|[![quality](https://img.shields.io/ansible/quality/51946)](https://galaxy.ansible.com/robertdebock/cups)|[![downloads](https://img.shields.io/ansible/role/d/51946)](https://galaxy.ansible.com/robertdebock/cups)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-cups.svg)](https://github.com/robertdebock/ansible-role-cups/releases/)|
+|Travis|GitHub|GitLab|Quality|Downloads|Version|
+|------|------|------|-------|---------|-------|
+|[![travis](https://travis-ci.com/robertdebock/ansible-role-cups.svg?branch=master)](https://travis-ci.com/robertdebock/ansible-role-cups)|[![github](https://github.com/robertdebock/ansible-role-cups/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-cups/actions)|[![gitlab](https://gitlab.com/robertdebock/ansible-role-cups/badges/master/pipeline.svg)](https://gitlab.com/robertdebock/ansible-role-cups)|[![quality](https://img.shields.io/ansible/quality/51946)](https://galaxy.ansible.com/robertdebock/cups)|[![downloads](https://img.shields.io/ansible/role/d/51946)](https://galaxy.ansible.com/robertdebock/cups)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-cups.svg)](https://github.com/robertdebock/ansible-role-cups/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
