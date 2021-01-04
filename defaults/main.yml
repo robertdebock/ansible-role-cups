@@ -25,10 +25,6 @@ cups_locations:
     require: user @SYSTEM
     order: allow,deny
 
-# A list of the rmeote protocols. Choose from "CUPS", "dnssd" and/or "none".
-cups_browse_remote_protocols:
-  - none
-
 # Cups can save a job history. Choose from "No" or "Yes".
 cups_preserve_job_history: "Yes"
 

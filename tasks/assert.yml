@@ -45,13 +45,6 @@
   when:
     - item.authtype is defined
 
-- name: test if cups_browse_remote_protocols is set correctly
-  assert:
-    that:
-      - cups_browse_remote_protocols is defined
-      - cups_browse_remote_protocols is iterable
-    quiet: yes
-
 - name: test if item in cups_browse_remote_protocols is set correctly
   assert:
     that:
