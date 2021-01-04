@@ -45,13 +45,6 @@
   when:
     - item.authtype is defined
 
-- name: test if item in cups_browse_remote_protocols is set correctly
-  assert:
-    that:
-      - item in [ "CUPS", "dnssd", "none" ]
-    quiet: yes
-  loop: "{{ cups_browse_remote_protocols }}"
-
 - name: test if cups_preserve_job_history is set correctly
   assert:
     that:
