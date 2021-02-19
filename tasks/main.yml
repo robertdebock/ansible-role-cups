@@ -7,12 +7,12 @@
   delegate_to: localhost
 
 - name: install packages
-  package:
+  ansible.builtin.package:
     name: cups
     state: present
 
 - name: configure cups
-  template:
+  ansible.builtin.template:
     src: cupsd.conf.j2
     dest: /etc/cups/cupsd.conf
     mode: "0640"
@@ -21,7 +21,7 @@
     - restart cups
 
 - name: start and enable software
-  service:
+  ansible.builtin.service:
     name: "{{ cups_service }}"
     state: started
     enabled: yes

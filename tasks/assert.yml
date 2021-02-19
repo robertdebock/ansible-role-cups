@@ -1,14 +1,14 @@
 ---
 
 - name: test if cups_listen is set correctly
-  assert:
+  ansible.builtin.assert:
     that:
       - cups_listen is defined
       - cups_listen is string
     quiet: yes
 
 - name: test if cups_browsing is set correctly
-  assert:
+  ansible.builtin.assert:
     that:
       - cups_browsing is defined
       - cups_browsing is string
@@ -16,14 +16,14 @@
     quiet: yes
 
 - name: test if cups_locations is set correctly
-  assert:
+  ansible.builtin.assert:
     that:
       - cups_locations is defined
       - cups_locations is iterable
     quiet: yes
 
 - name: test if item in cups_locations is set correctly
-  assert:
+  ansible.builtin.assert:
     that:
       - item.name is defined
       - item.name is string
@@ -35,7 +35,7 @@
     label: "{{ item.name }}"
 
 - name: test if item.authtype in cups_locations is set correctly
-  assert:
+  ansible.builtin.assert:
     that:
       - item.authtype in [ "Basic", "Default", "Negotiate", "None" ]
     quiet: yes
@@ -46,7 +46,7 @@
     - item.authtype is defined
 
 - name: test if cups_preserve_job_history is set correctly
-  assert:
+  ansible.builtin.assert:
     that:
       - cups_preserve_job_history is defined
       - cups_preserve_job_history is string
@@ -54,7 +54,7 @@
     quiet: yes
 
 - name: test if cups_web_interface is set correctly
-  assert:
+  ansible.builtin.assert:
     that:
       - cups_web_interface is defined
       - cups_web_interface is string
