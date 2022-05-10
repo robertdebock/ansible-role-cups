@@ -42,6 +42,7 @@ The default values for the variables are set in `defaults/main.yml`:
 # defaults file for cups
 
 # Allow remote access
+cups_serveralias: "*"
 cups_listen: "localhost:631"
 
 # Share local printers on the local network.
