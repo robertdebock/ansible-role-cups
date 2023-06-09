@@ -5,6 +5,7 @@
     that:
       - cups_listen is defined
       - cups_listen is string
+      - cups_listen is not none
     quiet: yes
 
 - name: assert | Test if cups_browsing is set correctly
@@ -27,8 +28,10 @@
     that:
       - item.name is defined
       - item.name is string
+      - item.name is not none
       - item.order is defined
       - item.order is string
+      - item.order is not none
     quiet: yes
   loop: "{{ cups_locations }}"
   loop_control:
@@ -49,6 +52,7 @@
   ansible.builtin.assert:
     that:
       - item.allow is string
+      - item.allow is not none
     quiet: yes
   loop: "{{ cups_locations }}"
   loop_control:
