@@ -5,4 +5,4 @@
 repository:
   description: Install and configure CUPS, the Common Unix Printing System.
   homepage: https://robertdebock.nl/
-  topics: cups, print, printer, printing, ansible, molecule, tox, playbook
+  topics: cups, print, printer, printing, system, ansible, molecule, tox, playbook
