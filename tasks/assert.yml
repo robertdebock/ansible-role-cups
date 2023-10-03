@@ -12,8 +12,7 @@
   ansible.builtin.assert:
     that:
       - cups_browsing is defined
-      - cups_browsing is string
-      - cups_browsing in [ "Off", "On" ]
+      - cups_browsing is boolean
     quiet: yes
 
 - name: assert | Test cups_locations
@@ -64,14 +63,12 @@
   ansible.builtin.assert:
     that:
       - cups_preserve_job_history is defined
-      - cups_preserve_job_history is string
-      - cups_preserve_job_history in [ "No", "Yes" ]
+      - cups_preserve_job_history is boolean
     quiet: yes
 
 - name: assert | Test cups_web_interface
   ansible.builtin.assert:
     that:
       - cups_web_interface is defined
-      - cups_web_interface is string
-      - cups_web_interface in [ "No", "Yes" ]
+      - cups_web_interface is boolean
     quiet: yes

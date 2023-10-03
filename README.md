@@ -4,7 +4,7 @@ Install and configure CUPS, the Common Unix Printing System.
 
 |GitHub|GitLab|Quality|Downloads|Version|
 |------|------|-------|---------|-------|
-|[![github](https://github.com/robertdebock/ansible-role-cups/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-cups/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-cups/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-cups)|[![quality](https://img.shields.io/ansible/quality/51946)](https://galaxy.ansible.com/robertdebock/cups)|[![downloads](https://img.shields.io/ansible/role/d/51946)](https://galaxy.ansible.com/robertdebock/cups)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-cups.svg)](https://github.com/robertdebock/ansible-role-cups/releases/)|
+|[![github](https://github.com/robertdebock/ansible-role-cups/workflows/Ansible%20Molecule/badge.svg)](https://github.com/robertdebock/ansible-role-cups/actions)|[![gitlab](https://gitlab.com/robertdebock-iac/ansible-role-cups/badges/master/pipeline.svg)](https://gitlab.com/robertdebock-iac/ansible-role-cups)|[![quality](https://img.shields.io/ansible/quality/24469)](https://galaxy.ansible.com/robertdebock/cups)|[![downloads](https://img.shields.io/ansible/role/d/24469)](https://galaxy.ansible.com/robertdebock/cups)|[![Version](https://img.shields.io/github/release/robertdebock/ansible-role-cups.svg)](https://github.com/robertdebock/ansible-role-cups/releases/)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -48,8 +48,8 @@ The default values for the variables are set in [`defaults/main.yml`](https://gi
 cups_listen: "localhost:631"
 cups_serveralias: "*"
 
-# Share local printers on the local network.
-cups_browsing: "Off"
+# Share local printers on the local network. (boolean)
+cups_browsing: no
 
 # Allow access to the server...
 cups_locations:
@@ -69,11 +69,11 @@ cups_locations:
     require: user @SYSTEM
     order: allow,deny
 
-# Cups can save a job history. Choose from "No" or "Yes".
-cups_preserve_job_history: "Yes"
+# Cups can save a job history. (boolean)
+cups_preserve_job_history: yes
 
-# Cups can offer a web-interface. Choose from "No" or "Yes".
-cups_web_interface: "Yes"
+# Cups can offer a web-interface. (boolean)
+cups_web_interface: yes
 ```
 
 ## [Requirements](#requirements)
