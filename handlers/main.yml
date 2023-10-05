@@ -5,3 +5,11 @@
   ansible.builtin.service:
     name: "{{ cups_service }}"
     state: restarted
+
+- name: Reload disabled AppArmor cups profile
+  ansible.builtin.command:
+    cmd: apparmor_parser -R /etc/apparmor.d/disable/usr.sbin.cupsd
+
+- name: Load the AppArmor cups profile
+  ansible.builtin.shell:
+    cmd: cat /etc/apparmor.d/usr.sbin.cupsd | apparmor_parser -a

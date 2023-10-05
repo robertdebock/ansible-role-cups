@@ -12,6 +12,28 @@
     name: cups
     state: present
 
+- name: Disable AppArmor cups profile
+  block:
+    - name: Check if AppArmor cups profile is enabled
+      ansible.builtin.stat:
+        path: /etc/apparmor.d/usr.sbin.cupsd
+      register: cups_apparmor_file
+
+    - name: Disable AppArmor cups profile
+      ansible.builtin.file:
+        src: /etc/apparmor.d/usr.sbin.cupsd
+        dest: /etc/apparmor.d/disable/usr.sbin.cupsd
+        state: link
+      when:
+        - cups_apparmor_file.stat.exists
+  when:
+    - ansible_distribution == "Ubuntu"
+  notify:
+    - Reload disabled AppArmor cups profile
+
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
+
 - name: Configure cups
   ansible.builtin.template:
     src: cupsd.conf.j2
@@ -20,6 +42,18 @@
     validate: cupsd -t -s /etc/cups/cups-files.conf -c %s
   notify:
     - Restart cups
+
+- name: Enable AppArmor cups profile
+  ansible.builtin.file:
+    path: /etc/apparmor.d/disable/usr.sbin.cupsd
+    state: absent
+  when:
+    - ansible_distribution == "Ubuntu"
+  notify:
+    - Load the AppArmor cups profile
+
+- name: Flush handlers
+  ansible.builtin.meta: flush_handlers
 
 - name: Start and enable software
   ansible.builtin.service:
