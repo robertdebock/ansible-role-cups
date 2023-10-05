@@ -13,5 +13,5 @@
 
 - name: Load the AppArmor cups profile
   ansible.builtin.shell:
-    cmd: set -o pipefail ; cat /etc/apparmor.d/usr.sbin.cupsd | apparmor_parser -a
+    cmd: "set -o pipefail && cat /etc/apparmor.d/usr.sbin.cupsd | apparmor_parser -a"
   changed_when: yes
