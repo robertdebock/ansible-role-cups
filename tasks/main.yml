@@ -13,6 +13,10 @@
     state: present
 
 - name: Disable AppArmor cups profile
+  when:
+    - ansible_distribution == "Ubuntu"
+  notify:
+    - Reload disabled AppArmor cups profile
   block:
     - name: Check if AppArmor cups profile is enabled
       ansible.builtin.stat:
@@ -26,10 +30,6 @@
         state: link
       when:
         - cups_apparmor_file.stat.exists
-  when:
-    - ansible_distribution == "Ubuntu"
-  notify:
-    - Reload disabled AppArmor cups profile
 
 - name: Flush handlers
   ansible.builtin.meta: flush_handlers
