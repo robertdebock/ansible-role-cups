@@ -25,8 +25,8 @@
 
     - name: Disable AppArmor cups profile
       ansible.builtin.file:
-        src: /etc/apparmor.d/usr.sbin.cupsd
-        dest: /etc/apparmor.d/disable/usr.sbin.cupsd
+        dest: /etc/apparmor.d/usr.sbin.cupsd
+        src: /etc/apparmor.d/disable/usr.sbin.cupsd
         state: link
       when:
         - cups_apparmor_file.stat.exists
