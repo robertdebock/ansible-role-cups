@@ -9,7 +9,9 @@
 - name: Reload disabled AppArmor cups profile
   ansible.builtin.command:
     cmd: apparmor_parser -R /etc/apparmor.d/disable/usr.sbin.cupsd
+  changed_when: yes
 
 - name: Load the AppArmor cups profile
   ansible.builtin.shell:
     cmd: set -o pipefail ; cat /etc/apparmor.d/usr.sbin.cupsd | apparmor_parser -a
+  changed_when: yes
