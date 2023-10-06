@@ -23,6 +23,11 @@
         path: /etc/apparmor.d/usr.sbin.cupsd
       register: cups_apparmor_file
 
+    - name: Check of AppArmon disable is available
+      ansible.builtin.stat:
+        path: /etc/apparmor.d/disable
+      register: cups_apparmor_disable
+
     - name: Disable AppArmor cups profile
       ansible.builtin.file:
         src: /etc/apparmor.d/usr.sbin.cupsd
@@ -30,6 +35,7 @@
         state: link
       when:
         - cups_apparmor_file.stat.exists
+        - cups_apparmor_disable.stat.exists
 
 - name: Flush handlers
   ansible.builtin.meta: flush_handlers
