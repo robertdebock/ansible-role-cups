@@ -17,13 +17,13 @@
     src: cupsd.conf.j2
     dest: /etc/cups/cupsd.conf
     mode: "0640"
-    register: cups_conf_changed
   check_mode: true
+  register: cups_conf_changed
 
 - name: Disable AppArmor cups profile
   when:
     - ansible_distribution == "Ubuntu"
-    - cups_conf_changed
+    - cups_conf_changed.changed
   notify:
     - Reload disabled AppArmor cups profile
   block:
@@ -64,7 +64,7 @@
     state: absent
   when:
     - ansible_distribution == "Ubuntu"
-    - cups_conf_changed
+    - cups_conf_changed.changed
   notify:
     - Load the AppArmor cups profile
 
