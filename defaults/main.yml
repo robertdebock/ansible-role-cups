@@ -6,7 +6,7 @@ cups_listen: "localhost:631"
 cups_serveralias: "*"
 
 # Share local printers on the local network. (boolean)
-cups_browsing: no
+cups_browsing: false
 
 # Allow access to the server...
 cups_locations:
@@ -27,7 +27,7 @@ cups_locations:
     order: allow,deny
 
 # Cups can save a job history. (boolean)
-cups_preserve_job_history: yes
+cups_preserve_job_history: true
 
 # Cups can offer a web-interface. (boolean)
-cups_web_interface: yes
+cups_web_interface: true

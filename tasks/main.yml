@@ -4,7 +4,7 @@
 - name: Import assert.yml
   ansible.builtin.import_tasks:
     file: assert.yml
-  run_once: yes
+  run_once: true
   delegate_to: localhost
 
 - name: Install packages
@@ -12,9 +12,18 @@
     name: cups
     state: present
 
+- name: Check for configuration change
+  ansible.builtin.template:
+    src: cupsd.conf.j2
+    dest: /etc/cups/cupsd.conf
+    mode: "0640"
+  check_mode: true
+  register: cups_conf_changed
+
 - name: Disable AppArmor cups profile
   when:
     - ansible_distribution == "Ubuntu"
+    - cups_conf_changed.changed
   notify:
     - Reload disabled AppArmor cups profile
   block:
@@ -23,7 +32,7 @@
         path: /etc/apparmor.d/usr.sbin.cupsd
       register: cups_apparmor_file
 
-    - name: Check of AppArmon disable is available
+    - name: Check of AppArmor disable is available
       ansible.builtin.stat:
         path: /etc/apparmor.d/disable
       register: cups_apparmor_disable
@@ -55,6 +64,7 @@
     state: absent
   when:
     - ansible_distribution == "Ubuntu"
+    - cups_conf_changed.changed
   notify:
     - Load the AppArmor cups profile
 
@@ -65,4 +75,4 @@
   ansible.builtin.service:
     name: "{{ cups_service }}"
     state: started
-    enabled: yes
+    enabled: true

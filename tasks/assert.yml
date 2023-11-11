@@ -6,21 +6,21 @@
       - cups_listen is defined
       - cups_listen is string
       - cups_listen is not none
-    quiet: yes
+    quiet: true
 
 - name: assert | Test cups_browsing
   ansible.builtin.assert:
     that:
       - cups_browsing is defined
       - cups_browsing is boolean
-    quiet: yes
+    quiet: true
 
 - name: assert | Test cups_locations
   ansible.builtin.assert:
     that:
       - cups_locations is defined
       - cups_locations is iterable
-    quiet: yes
+    quiet: true
 
 - name: assert | Test item in cups_locations
   ansible.builtin.assert:
@@ -31,7 +31,7 @@
       - item.order is defined
       - item.order is string
       - item.order is not none
-    quiet: yes
+    quiet: true
   loop: "{{ cups_locations }}"
   loop_control:
     label: "{{ item.name }}"
@@ -40,7 +40,7 @@
   ansible.builtin.assert:
     that:
       - item.authtype in [ "Basic", "Default", "Negotiate", "None" ]
-    quiet: yes
+    quiet: true
   loop: "{{ cups_locations }}"
   loop_control:
     label: "{{ item.name }}"
@@ -52,7 +52,7 @@
     that:
       - item.allow is string
       - item.allow is not none
-    quiet: yes
+    quiet: true
   loop: "{{ cups_locations }}"
   loop_control:
     label: "{{ item.name }}"
@@ -64,11 +64,11 @@
     that:
       - cups_preserve_job_history is defined
       - cups_preserve_job_history is boolean
-    quiet: yes
+    quiet: true
 
 - name: assert | Test cups_web_interface
   ansible.builtin.assert:
     that:
       - cups_web_interface is defined
       - cups_web_interface is boolean
-    quiet: yes
+    quiet: true
