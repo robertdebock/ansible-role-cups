@@ -12,9 +12,18 @@
     name: cups
     state: present
 
+- name: Check for configuration change
+  ansible.builtin.template:
+    src: cupsd.conf.j2
+    dest: /etc/cups/cupsd.conf
+    mode: "0640"
+    register: cups_conf_changed
+  check_mode: true
+
 - name: Disable AppArmor cups profile
   when:
     - ansible_distribution == "Ubuntu"
+    - cups_conf_changed
   notify:
     - Reload disabled AppArmor cups profile
   block:
@@ -23,7 +32,7 @@
         path: /etc/apparmor.d/usr.sbin.cupsd
       register: cups_apparmor_file
 
-    - name: Check of AppArmon disable is available
+    - name: Check of AppArmor disable is available
       ansible.builtin.stat:
         path: /etc/apparmor.d/disable
       register: cups_apparmor_disable
@@ -55,6 +64,7 @@
     state: absent
   when:
     - ansible_distribution == "Ubuntu"
+    - cups_conf_changed
   notify:
     - Load the AppArmor cups profile
 
