@@ -49,10 +49,10 @@ WebInterface {{ cups_web_interface | ternary('Yes', 'No') }}
 # Set the default printer/job policies...
 <Policy default>
   # Job/subscription privacy...
-  JobPrivateAccess default
-  JobPrivateValues default
-  SubscriptionPrivateAccess default
-  SubscriptionPrivateValues default
+  JobPrivateAccess  {{ cups_job_private_access }}
+  JobPrivateValues {{ cups_job_private_values }}
+  SubscriptionPrivateAccess {{ cups_sub_private_access }}
+  SubscriptionPrivateValues {{ cups_sub_private_values }}
 
   # Job-related operations must be done by the owner or an administrator...
   <Limit Create-Job Print-Job Print-URI Validate-Job>

@@ -31,3 +31,20 @@ cups_preserve_job_history: true
 
 # Cups can offer a web-interface. (boolean)
 cups_web_interface: true
+
+# Default policy settings for Cups
+# JobPrivateAccess (string) should be one of "default", "all", or an ACL string
+# consisting of a space separated list of one or more of:
+# user, @group, @ACL, @OWNER, and @SYSTEM. The default is "@OWNER @SYSTEM"
+cups_job_private_access: "default"
+# Specifies the list of job values to make private. The "default" values are:
+# "job-name", "job-originating-host-name", "job-originating-user-name", and "phone".
+# You can also set it to "none" or "all"
+cups_job_private_values: "default"
+# As per JobPrivateAccess, but for subscription events
+cups_sub_private_access: "default"
+# Specifies the list of subscription values to make private. The "default" values are:
+# "notify-events", "notify-pull-method", "notify-recipient-uri", 
+# "notify-subscriber-user-name", and "notify-user-data".
+# You can also set it to "none" or "all"
+cups_sub_private_values: "default"
